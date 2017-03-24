@@ -1,0 +1,32 @@
+set.seed(5)
+n<-50
+l<-2
+p<-c()
+k<-1
+while (k<=n) 
+{
+	e<-exp(-2)
+	u<-runif(1,0,1)
+	i<-0
+	f<-e
+	while(1)
+	{
+	if(u<f)
+		{
+		p[k]<-i
+		k<-k+1
+		break;
+		}
+		e<-(2*e)/(i+1)
+		f<-f+e
+		i<-i+1
+	}
+}
+
+print(p)
+png('Q2_PMDF.png')
+hist(p,freq=FALSE,col="#25B249",border="#000000")
+dev.off()
+png('Q2_ECDF.png')
+plot(ecdf(p),freq=FALSE,col="#25B249",border="#000000")
+dev.off()
